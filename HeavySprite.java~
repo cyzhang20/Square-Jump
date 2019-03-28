@@ -1,0 +1,41 @@
+public class HeavySprite extends MobileSprite
+{
+  MobileSprite movingSquare;
+  public HeavySprite(double left, double top, int width, int height, String image, double vx, double vy)
+  {
+    super(left, top, width, height, image, vx, vy);
+    
+  }
+  
+  
+  public void step(World world)
+  {
+    movingSquare = world.getMovingSquare();
+    
+    //if(world.keyPressed2())
+      //super.setVY(super.getVY() + 0.5);
+    
+    /*System.out.println(world.keyPressed2());
+    System.out.println(movingSquare.getTop());
+    System.out.println(movingSquare.getHeight());
+      System.out.println(world.getHeight());*/
+                       
+    /*if(world.keyPressed2() && movingSquare.getTop() + movingSquare.getHeight() <= world.getHeight())
+    {
+      System.out.println("here");
+      super.setVY(super.getVY() - 2.0);
+      world.setSpaceVal(false);
+    }
+    else if(world.keyPressed2() == false && movingSquare.getTop() + movingSquare.getHeight() > world.getHeight())
+    {
+      world.setSpaceVal(false);
+      super.setVY(Math.abs(super.getVY()));
+    }*/
+  
+    super.step(world);
+    world.setSpaceVal(false);
+  }
+ 
+    
+  
+}

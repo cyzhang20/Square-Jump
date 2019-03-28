@@ -1,0 +1,74 @@
+public class MobileSprite extends Sprite
+{
+  private double vx;
+  private double vy;
+  
+  public MobileSprite(double left, double top, int width, int height, String image,
+                      double velocityX, double velocityY)
+  {
+    super(left, top, width, height, image);
+    vx = velocityX;
+    vy = velocityY;
+    //insert code here
+  }
+  
+  public double getVY()
+  {
+    return vy;
+  }
+  
+  public double getVX()
+  {
+    return vx;
+  }
+  
+  public void setVY(double velocityY)
+  {
+    vy = velocityY;
+  }
+  
+  public void setVX(double velocityX)
+  {
+    vx = velocityX;
+  }
+  
+  public void step(World world)
+  {
+    double left = super.getLeft();
+    double top = super.getTop();
+    /*bouncing code from original lab
+     if (getLeft() < 0)
+      vx = Math.abs(vx);
+    if (getLeft() + getWidth() > world.getWidth())
+      vx = -Math.abs(vx);*/
+    if(world.keyPressed2())
+    {
+      
+    /*if(top > 350)
+      vy=vy-0.5;
+    else
+      vy=vy+0.5;*/
+      
+      //0.5 represent the gravity's effect of decelerate the upward speed
+      vy=vy+0.5;
+    
+    }
+    if (getTop() + getHeight() > world.getHeight()-1 && vy > 0)
+    {
+      top = world.getHeight() - super.getWidth();
+      vy = 0; 
+      world.setSpaceVal(false); //reset jump flag
+    }
+    left = left + vx;
+    top = top + vy; //
+    super.setLeft(left);
+    super.setTop(top);
+    
+  }
+  
+  
+  public void setSpeed(double speed)
+  {
+    this.setVX(speed);
+  }
+}
